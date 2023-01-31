@@ -1,0 +1,18 @@
+main {
+  padding: 0 20px;
+}
+
+.header {
+  padding: 20px;
+
+  /* border-bottom: 1px solid ; */
+}
+
+h1,
+h2,
+h3,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
