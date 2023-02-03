@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { refreshUser } from 'redux/auth/authOperation';
 import AppBar from './AppBar/AppBar';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
@@ -18,13 +20,30 @@ export function App() {
     dispatch(refreshUser())
   }, [dispatch]);
 
-  return isRefreshing ? ("Is refreshing data") : (
+  return isRefreshing ? (
+    'Is refreshing data'
+  ) : (
     <Routes>
       <Route path="/" element={<AppBar />}>
         <Route index element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute component={RegisterPage} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute component={LoginPage} redirectTo="/contacts" />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute component={ContactsPage} redirectTo="/login" />
+          }
+        />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
