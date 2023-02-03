@@ -20,15 +20,11 @@ const ContactsList = () => {
   return (
     <>
       <ul className={css.contactsList}>
-        {filtredContacts.map(({id, name, phone}) => (
-          <ContactsItem
-            key={id}
-            contact={{ id, name, phone }}
-          />
+        {filtredContacts.map(({ id, name, number }) => (
+          <ContactsItem key={id} contact={{ id, name, number }} />
         ))}
       </ul>
     </>
-  
   );
 };
 

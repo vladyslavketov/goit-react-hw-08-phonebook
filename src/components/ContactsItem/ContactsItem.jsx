@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
-import { deleteContact } from '../../redux/contactsOperations';
+import { deleteContact } from '../../redux/contacts/contactsOperations';
 
 import PropTypes from 'prop-types';
 import css from '../ContactsItem/ContactsItem.module.css'
 
-const ContactsItem = ({ contact: { id, name, phone } }) => {
+const ContactsItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
 
   return (
     <li key={id} className={css.contactsItem}>
       <span>{name}</span>
-      <span>{phone}</span>
+      <span>{number}</span>
       <button type="button" onClick={() => dispatch(deleteContact(id))}>Delete</button>
     </li>
   );
@@ -21,7 +21,7 @@ ContactsItem.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
 };
