@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Container } from 'components/App/App.styled'; 
+import { AppBarContainer, Container } from 'components/App/App.styled'; 
 import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthNav/AuthNav';
@@ -11,9 +11,14 @@ import { Header } from './AppBar.styled';
 
 const AppBar = () => {
   const { isLoggedIn } = useAuth();
+  const bodyRef = document.querySelector('body');
+
+  isLoggedIn
+    ? bodyRef.classList.add('isLoggedIn')
+    : bodyRef.classList.remove('isLoggedIn');
 
   return (
-    <>
+    <AppBarContainer>
       <Container>
         <Header>
           <Navigation />
@@ -25,7 +30,7 @@ const AppBar = () => {
           <Outlet />
         </main>
       </Suspense>
-    </>
+    </AppBarContainer>
   );
 };
 

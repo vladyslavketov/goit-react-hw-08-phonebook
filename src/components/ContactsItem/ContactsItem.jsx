@@ -3,20 +3,21 @@ import { deleteContact } from '../../redux/contacts/contactsOperations';
 import { Button } from "components/Button/Button";
 
 import PropTypes from 'prop-types';
-import css from '../ContactsItem/ContactsItem.module.css'
+import { Item } from "./ContactsItem.styled";
 
 const ContactsItem = ({ contact: { id, name, number } }) => {
   const dispatch = useDispatch();
 
   return (
-    <li key={id} className={css.contactsItem}>
+    <Item key={id}>
       <span>{name}</span>
       <span>{number}</span>
-      {/* <button type="button" onClick={() => dispatch(deleteContact(id))}>
-        Delete
-      </button> */}
-      <Button title={"Delete"} onClick={() => dispatch(deleteContact(id))} />
-    </li>
+      <Button
+        type={'button'}
+        title={'Delete'}
+        onClick={() => dispatch(deleteContact(id))}
+      />
+    </Item>
   );
 };
 

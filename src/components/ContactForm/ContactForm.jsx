@@ -1,6 +1,7 @@
+import { StyledForm, StyledInput, StyledLabel } from 'components/App/App.styled';
+import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/contactsOperations';
-import css from '../ContactForm/ContactForm.module.css'
 
 export default function ContactForm() {
   const dispatch = useDispatch();
@@ -10,8 +11,6 @@ export default function ContactForm() {
     e.preventDefault();
 
     const { name, number } = e.currentTarget.elements;
-    console.log(name);
-    console.log(number);
     
     if (contacts.find(contact => contact.name === name.value)) {
       return alert(`${name} is already in contacts.`);
@@ -28,27 +27,23 @@ export default function ContactForm() {
 
   return (
     <>
-      <form className={css.form} onSubmit={handleSubmit}>
-        <label>
+      <StyledForm onSubmit={handleSubmit}>
+        <StyledLabel>
           Name
-          <input
+          <StyledInput
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label>
+        </StyledLabel>
+        <StyledLabel>
           Number
-          <input
-            type="tel"
-            name="number"
-            required
-          />
-        </label>
-        <button type="submit">Add contact</button>
-      </form>
+          <StyledInput type="tel" name="number" required />
+        </StyledLabel>
+        <Button type={'submit'} title={'Add contact'} />
+      </StyledForm>
     </>
-  )
+  );
 };

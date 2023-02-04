@@ -25,7 +25,14 @@ export function App() {
   ) : (
     <Routes>
       <Route path="/" element={<AppBar />}>
-        <Route index element={<HomePage />} />
+        {/* <Route index element={<HomePage />} /> */}
+        <Route
+          index
+          element={
+            <RestrictedRoute component={HomePage} redirectTo="/contacts" />
+          }
+        />
+
         <Route
           path="/register"
           element={

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { Section, Container } from 'components/App/App.styled'; 
+import { Section, Container, Box } from 'components/App/App.styled'; 
 import ContactForm from 'components/ContactForm/ContactForm';
 import Filter from 'components/Filter/Filter';
 import ContactsList from 'components/ContactsList/ContactsList';
@@ -21,11 +21,11 @@ const ContactsPage = () => {
       <Container>
         <ContactForm />
         {isShow && (
-          <>
-            <h2>Contacts</h2>
+          <Box>
+            <h2>Your contacts</h2>
             <Filter />
             <ContactsList />
-          </>
+          </Box>
         )}
       </Container>
     </Section>
@@ -33,11 +33,3 @@ const ContactsPage = () => {
 };
 
 export default ContactsPage;
-
-// <h1>Phonebook</h1>
-// <ContactForm/>
-// {isShow && <><h2>Contacts</h2><Filter /><ContactsList /></>}
-
-// export const ContactsPage = () => {
-//   return <h1>ContactsPage</h1>;
-// };

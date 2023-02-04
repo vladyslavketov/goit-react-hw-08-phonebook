@@ -11,14 +11,13 @@ const { isLoggedIn } = useAuth();
       <nav>
         <NavList>
           <li>
-            <StyledNavLink to="/">Home</StyledNavLink>
-          </li>
-          {isLoggedIn && (
-            <li>
+            {isLoggedIn ? (
               <StyledNavLink to="/contacts">Contacts</StyledNavLink>
-            </li>
-          )}
-      </NavList>
+            ) : (
+              <StyledNavLink to="/">Home</StyledNavLink>
+            )}
+          </li>
+        </NavList>
       </nav>
     </>
   );
