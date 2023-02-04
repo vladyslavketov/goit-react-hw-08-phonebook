@@ -1,15 +1,14 @@
-import { NavLink } from "react-router-dom";
-import css from '../AuthNav/AuthNav.module.css';
+import { StyledNavLink, NavList } from 'components/App/App.styled';
 
 export const AuthNav = () => {
   return (
-    <ul className={css.navList}>
-      <li className={css.navItem}>
-        <NavLink to="/register">Sign Up</NavLink>
+    <NavList>
+      <li>
+        <StyledNavLink to="/register">Sign Up</StyledNavLink>
       </li>
-      <li className={css.navItem}>
-        <NavLink to="/login">Log In</NavLink>
+      <li>
+        <StyledNavLink to="/login">Log In</StyledNavLink>
       </li>
-    </ul>
+    </NavList>
   );
 };

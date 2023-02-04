@@ -10,7 +10,9 @@ export default function ContactForm() {
     e.preventDefault();
 
     const { name, number } = e.currentTarget.elements;
-
+    console.log(name);
+    console.log(number);
+    
     if (contacts.find(contact => contact.name === name.value)) {
       return alert(`${name} is already in contacts.`);
     };
@@ -25,7 +27,7 @@ export default function ContactForm() {
   };
 
   return (
-      <>
+    <>
       <form className={css.form} onSubmit={handleSubmit}>
         <label>
           Name
@@ -48,5 +50,5 @@ export default function ContactForm() {
         <button type="submit">Add contact</button>
       </form>
     </>
-    )
+  )
 };

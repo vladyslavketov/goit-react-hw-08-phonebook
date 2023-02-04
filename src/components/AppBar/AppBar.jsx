@@ -1,28 +1,36 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
+import { Container } from 'components/App/App.styled'; 
 import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { useAuth } from 'hooks/useAuth';
-import css from './AppBar.module.css';
+import { Header } from './AppBar.styled';
 
 const AppBar = () => {
   const { isLoggedIn } = useAuth();
 
   return (
-    <div className={css.container}>
-      <header className={css.header}>
-        <Navigation />
-        {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </header>
+    <>
+      <Container>
+        <Header>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </Header>
+      </Container>
       <Suspense fallback={<div style={{ padding: '0 20px' }}>Loading...</div>}>
         <main>
           <Outlet />
         </main>
       </Suspense>
-    </div>
+    </>
   );
+};
+
+AppBar.propTypes = {
+  isLoggedIn: PropTypes.bool,
 };
 
 export default AppBar;

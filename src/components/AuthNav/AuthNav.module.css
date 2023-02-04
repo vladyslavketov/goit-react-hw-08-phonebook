@@ -1,18 +1,5 @@
-.navList {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  gap: 12px;
-}
-
-.navItem a {
-  color: black;
-
-  text-decoration: none;
-}
-
-.navItem:last-child::before{
+/* .navItem:last-child::before{
   content: "|";
 
   margin-right: 12px;
-}
+} */
