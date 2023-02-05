@@ -1,9 +1,8 @@
-import { AppBarContainer, Box2, Container, Section } from "components/App/App.styled";
+import { Box2, Container, Section } from "components/App/App.styled";
 import { AuthNav } from "components/AuthNav/AuthNav";
 
 const HomePage = () => {
   return (
-    <AppBarContainer>
       <Section>
         <Container>
           <Box2>
@@ -16,7 +15,6 @@ const HomePage = () => {
           </Box2>
         </Container>
       </Section>
-    </AppBarContainer>
   );
 };
 
