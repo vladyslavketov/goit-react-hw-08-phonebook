@@ -1,15 +1,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-const BGIMF = 'bg4'
-
 export const AppBarContainer = styled.div`
+  width: 100%;
   height: 100vh;
-  width: 100vw;
-  background-image: url('./images/${BGIMF}.webp');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 `;
 
 export const Section = styled.section`

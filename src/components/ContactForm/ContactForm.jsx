@@ -3,6 +3,13 @@ import { Button } from 'components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contacts/contactsOperations';
 
+import { Notify } from 'notiflix';
+Notify.init({
+  width: '320px',
+  closeButton: false,
+  timeout: 5000,
+});
+
 export default function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
@@ -13,7 +20,9 @@ export default function ContactForm() {
     const { name, number } = e.currentTarget.elements;
     
     if (contacts.find(contact => contact.name === name.value)) {
-      return alert(`${name} is already in contacts.`);
+      return Notify.failure(
+        `Sorry, a contact with that name: "${name.value}" already exists. Try a different name.`
+      );
     };
 
     const newContact = {
